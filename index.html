@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hardik Goel | Quant &amp; Risk Analytics</title>
+<meta name="description" content="Hardik Goel, MBA (Business Analytics) at IIFT Delhi. Backtesting, market risk and analytics projects.">
+<link rel="preload" href="assets/fonts/newsreader-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:Newsreader;src:url(assets/fonts/newsreader-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Newsreader;src:url(assets/fonts/newsreader-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Inter;src:url(assets/fonts/inter-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Inter;src:url(assets/fonts/inter-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Inter;src:url(assets/fonts/inter-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap}
+
+:root{
+  --navy:#13213D; --navy2:#1C3158; --ink:#1B2A44; --body:#3A465C; --mute:#6B7689;
+  --gold:#C9A45C; --gold-soft:#E9D9B4; --teal:#1D6B66; --teal-soft:#DCEBE9;
+  --paper:#F3F1EC; --white:#FFFFFF; --rule:#E2DED5;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--body);font:400 17px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+a:focus-visible,.btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+.serif{font-family:Newsreader,Georgia,serif}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;color:#E8ECF4;
+  background:
+    radial-gradient(900px 500px at 85% 10%, rgba(201,164,92,.20), transparent 60%),
+    radial-gradient(700px 600px at 0% 100%, rgba(29,107,102,.35), transparent 60%),
+    linear-gradient(160deg, var(--navy2), var(--navy) 60%);}
+.hero::before{content:"";position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+  background-size:56px 56px;mask-image:linear-gradient(180deg,#000 30%,transparent 95%);-webkit-mask-image:linear-gradient(180deg,#000 30%,transparent 95%)}
+.hero svg.trace{position:absolute;left:0;right:0;bottom:70px;width:100%;height:180px;opacity:.55}
+nav{position:relative;display:flex;justify-content:space-between;align-items:center;padding:26px 0}
+nav .mark{font:500 20px Newsreader,Georgia,serif;color:#fff;text-decoration:none;letter-spacing:.01em}
+nav .mark span{color:var(--gold)}
+nav ul{display:flex;gap:30px;list-style:none;font-size:15px}
+nav ul a{text-decoration:none;color:#C5CDDC}
+nav ul a:hover{color:#fff}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.25fr .75fr;gap:64px;align-items:center;padding:64px 0 140px}
+.hello{color:var(--gold);font:400 22px Newsreader,Georgia,serif;font-style:normal}
+.hero h1{font:400 clamp(58px,8vw,96px)/.95 Newsreader,Georgia,serif;color:#fff;letter-spacing:-.025em;margin-top:10px}
+.hero .lede{font-size:19px;line-height:1.6;color:#C9D1DF;max-width:31em;margin-top:26px}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:12px 20px;border-radius:999px;font-weight:500;font-size:15.5px;text-decoration:none;transition:background .2s,color .2s,border-color .2s}
+.btn svg{width:17px;height:17px;fill:currentColor}
+.btn.gold{background:var(--gold);color:var(--navy)}
+.btn.gold:hover{background:#D8B874}
+.btn.line{border:1px solid rgba(255,255,255,.28);color:#fff}
+.btn.line:hover{border-color:var(--gold);color:var(--gold)}
+.portrait{justify-self:end;position:relative;width:300px}
+.portrait::before{content:"";position:absolute;inset:18px -18px -18px 18px;border:1px solid var(--gold);border-radius:18px}
+.portrait img{position:relative;display:block;width:300px;height:370px;object-fit:cover;object-position:50% 14%;border-radius:18px;box-shadow:0 30px 60px -20px rgba(0,0,0,.55)}
+
+/* credential strip overlapping hero */
+.creds{position:relative;z-index:2;margin-top:-64px;background:var(--white);border-radius:18px;box-shadow:0 24px 50px -24px rgba(19,33,61,.35);display:grid;grid-template-columns:repeat(4,1fr)}
+.cred{padding:26px 28px}
+.cred + .cred{border-left:1px solid var(--rule)}
+.cred b{display:block;font:500 28px/1.1 Newsreader,Georgia,serif;color:var(--ink)}
+.cred span{display:block;margin-top:6px;font-size:14px;color:var(--mute)}
+
+/* ---------- sections ---------- */
+section{padding:110px 0 0}
+.head{display:flex;align-items:baseline;gap:18px;margin-bottom:38px}
+.head h2{font:400 44px/1.1 Newsreader,Georgia,serif;color:var(--ink);letter-spacing:-.015em}
+.head p{color:var(--mute);font-size:16px;max-width:30em}
+.head::after{content:"";flex:1;height:1px;background:var(--rule);align-self:center}
+
+.project{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--white);border-radius:22px;overflow:hidden;box-shadow:0 20px 50px -30px rgba(19,33,61,.35)}
+.project + .project{margin-top:34px}
+.project .txt{padding:46px 46px 42px}
+.project .viz{padding:40px 38px;display:flex;flex-direction:column;justify-content:center}
+.project.one .viz{background:linear-gradient(160deg,var(--navy2),var(--navy));color:#C9D1DF}
+.project.two .viz{background:var(--teal-soft)}
+.kind{display:inline-block;font-size:13.5px;font-weight:500;color:var(--teal);background:var(--teal-soft);padding:4px 12px;border-radius:999px}
+.project.two .kind{color:#7A5A1C;background:#F4EBD6}
+.project h3{font:500 32px/1.15 Newsreader,Georgia,serif;color:var(--ink);margin-top:16px;letter-spacing:-.01em}
+.project .txt > p{margin-top:16px}
+.project ul{list-style:none;margin-top:18px}
+.project li{position:relative;padding-left:22px;margin-top:10px;font-size:16px}
+.project li::before{content:"";position:absolute;left:0;top:.62em;width:9px;height:9px;border-radius:50%;background:var(--gold-soft);box-shadow:inset 0 0 0 2px var(--gold)}
+.more{display:inline-flex;align-items:center;gap:8px;margin-top:26px;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--gold);padding-bottom:2px}
+.more:hover{color:var(--teal)}
+.more svg{width:17px;height:17px;fill:currentColor}
+.viz svg{width:100%;height:auto;display:block}
+.viz svg text{font-family:Inter,system-ui,sans-serif}
+.viz .cap{font-size:14px;line-height:1.55;margin-top:16px}
+.project.one .cap b{color:#fff}
+.project.two .cap{color:#41555A}
+.project.two .cap b{color:var(--ink)}
+.honest{margin-top:20px;padding:14px 18px;border-left:3px solid var(--gold);background:#FBF7EE;border-radius:0 10px 10px 0;font-size:15px;color:var(--ink)}
+
+/* experience + education */
+.duo{display:grid;grid-template-columns:1.25fr .75fr;gap:34px}
+.panel{background:var(--white);border-radius:22px;padding:40px 42px;box-shadow:0 20px 50px -30px rgba(19,33,61,.3)}
+.role + .role{margin-top:30px;padding-top:30px;border-top:1px solid var(--rule)}
+.role .top{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.role h3{font:500 24px/1.25 Newsreader,Georgia,serif;color:var(--ink)}
+.role .when{font-size:14px;color:var(--mute);white-space:nowrap}
+.role .org{color:var(--teal);font-weight:500;font-size:15.5px;margin-top:2px}
+.role ul{list-style:none;margin-top:12px}
+.role li{position:relative;padding-left:22px;margin-top:8px;font-size:16px}
+.role li::before{content:"";position:absolute;left:0;top:.62em;width:9px;height:9px;border-radius:50%;background:var(--gold-soft);box-shadow:inset 0 0 0 2px var(--gold)}
+.role p{margin-top:10px;font-size:16px}
+.panel.navy{background:linear-gradient(170deg,var(--navy2),var(--navy));color:#C9D1DF}
+.panel.navy h3{font:500 24px Newsreader,Georgia,serif;color:#fff}
+.school{padding:20px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.school:last-child{border-bottom:0;padding-bottom:0}
+.school b{display:block;color:#fff;font-weight:500}
+.school span{display:block;font-size:15px}
+.school em{display:inline-block;margin-top:8px;font-style:normal;color:var(--gold);font:500 22px Newsreader,Georgia,serif}
+
+/* contact */
+.contact{margin-top:110px;color:#C9D1DF;background:
+  radial-gradient(700px 400px at 100% 0%, rgba(201,164,92,.18), transparent 60%),
+  linear-gradient(160deg,var(--navy2),var(--navy))}
+.contact .wrap{padding-top:90px;padding-bottom:40px}
+.contact h2{font:400 clamp(38px,5.5vw,64px)/1.1 Newsreader,Georgia,serif;color:#fff;max-width:14em;letter-spacing:-.015em}
+.contact .actions{margin-top:30px}
+.contact small{display:block;margin-top:80px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);font-size:13.5px;color:#8D98AE}
+
+/* one entrance moment */
+@media (prefers-reduced-motion:no-preference){
+  .hero-grid > *{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+  .hero-grid > .portrait{animation-delay:.15s}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+}
+
+@media (max-width:900px){
+  .wrap{padding:0 22px}
+  nav ul{display:none}
+  .hero-grid{grid-template-columns:1fr;gap:44px;padding:28px 0 120px}
+  .portrait{justify-self:start;width:210px}
+  .portrait img{width:210px;height:260px}
+  .creds{grid-template-columns:1fr 1fr}
+  .cred:nth-child(3){border-left:0}
+  .cred:nth-child(n+3){border-top:1px solid var(--rule)}
+  .project,.duo{grid-template-columns:1fr}
+  .project .txt{padding:32px 26px}
+  .project .viz{padding:30px 22px}
+  .panel{padding:30px 26px}
+  .head{flex-wrap:wrap}.head h2{font-size:36px}.head::after{display:none}
+  section{padding-top:80px}
+  .cred{padding:20px 18px}.cred b{font-size:22px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <svg class="trace" viewBox="0 0 1440 180" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 120 C120 110 180 140 260 118 S400 70 480 92 S620 150 700 120 S840 40 940 60 S1080 120 1160 96 S1320 30 1440 44" fill="none" stroke="#C9A45C" stroke-width="1.5"/>
+    <path d="M0 150 C140 142 220 160 320 146 S500 110 600 124 S760 160 860 140 S1040 96 1140 110 S1320 80 1440 86" fill="none" stroke="#5FA8A1" stroke-width="1" opacity=".7"/>
+  </svg>
+  <div class="wrap">
+    <nav>
+      <a class="mark" href="#">Hardik Goel<span>.</span></a>
+      <ul><li><a href="#work">Work</a></li><li><a href="#experience">Experience</a></li><li><a href="#contact">Contact</a></li></ul>
+    </nav>
+    <div class="hero-grid">
+      <div>
+        <p class="hello">Hello, I'm</p>
+        <h1>Hardik Goel</h1>
+        <p class="lede">An MBA in Business Analytics at IIFT Delhi, working at the meeting point of finance, risk and data. I build backtests, risk models and dashboards, and I report what the data shows, including when the answer is no.</p>
+        <div class="actions">
+          <a class="btn gold" href="assets/Hardik_Goel_Resume.pdf"><svg viewBox="0 0 24 24"><path d="M12 16 6 10h4V3h4v7h4zM4 19h16v2H4z"/></svg>Download resume</a>
+          <a class="btn line" href="https://www.linkedin.com/in/hardik-goel-b90a2a121/"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56z"/></svg>LinkedIn</a>
+          <a class="btn line" href="https://github.com/hardikgoel7"><svg viewBox="0 0 24 24"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>GitHub</a>
+        </div>
+      </div>
+      <div class="portrait"><img src="assets/hardik.jpg" alt="Portrait of Hardik Goel" width="300" height="370"></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="creds">
+    <div class="cred"><b>99.28</b><span>percentile, CAT Quants</span></div>
+    <div class="cred"><b>IIFT Delhi</b><span>MBA, Business Analytics, 2027</span></div>
+    <div class="cred"><b>DTU</b><span>B.Tech, Mechanical, 88.30%</span></div>
+    <div class="cred"><b>Aditya Birla</b><span>Analytics intern, 2026</span></div>
+  </div>
+</div>
+
+<section id="work"><div class="wrap">
+  <div class="head"><h2>Selected work</h2></div>
+
+  <article class="project one">
+    <div class="txt">
+      <span class="kind">Independent project, 2026</span>
+      <h3>Backtesting and risk framework for Indian equities</h3>
+      <p>Four RSI and breakout trading rules, written down before any result was seen and tested on 454 Nifty 500 stocks from 2010 to 2026, with NSE costs, a locked out-of-sample period and 60 unit tests. Each rule was compared with the same trade placed on days it did not choose.</p>
+      <ul>
+        <li>No rule beat its own control. A value rule earned +4.7% a trade; the same trade on any month earned +5.0%.</li>
+        <li>A sector filter lifted returns by 78%, and lifted the control just as much.</li>
+        <li>A ₹10 lakh portfolio fell −17.7% at worst against the Nifty's −38.4%, because only 29% of capital was invested.</li>
+      </ul>
+      <a class="more" href="https://github.com/hardikgoel7/nse-backtest-risk-framework"><svg viewBox="0 0 24 24"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>Code and full write-up</a>
+    </div>
+    <div class="viz">
+      <svg viewBox="0 0 470 200" role="img" aria-labelledby="varT">
+        <title id="varT">Days the 99% Value at Risk was breached on the Nifty 50 over 3,413 days: expected 34, historical 58, normal 65, EGARCH-t 12.</title>
+        <g font-size="14" fill="#C9D1DF">
+          <text x="0" y="62">Historical</text><text x="0" y="112">Normal</text><text x="0" y="162">EGARCH-t</text>
+        </g>
+        <rect x="96" y="46" width="290" height="24" rx="4" fill="#5B6E92"/>
+        <rect x="96" y="96" width="325" height="24" rx="4" fill="#5B6E92"/>
+        <rect x="96" y="146" width="60" height="24" rx="4" fill="#C9A45C"/>
+        <g font-size="15" font-weight="600" fill="#fff">
+          <text x="394" y="63">58</text><text x="429" y="113">65</text><text x="164" y="163">12</text>
+        </g>
+        <line x1="266" y1="28" x2="266" y2="186" stroke="#fff" stroke-width="1.5" stroke-dasharray="4 4"/>
+        <text x="274" y="32" font-size="13" fill="#fff">34 expected</text>
+      </svg>
+      <p class="cap"><b>How often each 99% VaR model was breached</b> over 3,413 days of the Nifty 50. Historical and normal models broke almost twice as often as promised, in clusters. EGARCH with fat tails removed the clustering but overshot.</p>
+    </div>
+  </article>
+
+  <article class="project two">
+    <div class="txt">
+      <span class="kind">Academic project, 2026</span>
+      <h3>Diabetes risk classification and Power BI dashboard</h3>
+      <p>A logistic-regression classifier on 2,000 patient records, checked with stratified 5-fold cross-validation (AUC 0.972), plus a Power BI dashboard for exploring risk by age, BMI and glucose. The real question was where to set the screening cut-off.</p>
+      <p class="honest">The data turned out to be synthetic: a two-line rule, BMI at least 30 and glucose at least 140, matches 99.4% of labels and beats the model. I report that alongside the AUC.</p>
+      <a class="more" href="https://github.com/hardikgoel7/diabetes-risk-analytics"><svg viewBox="0 0 24 24"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>Notebook and dashboard</a>
+    </div>
+    <div class="viz">
+      <svg viewBox="0 0 470 250" role="img" aria-labelledby="thrT">
+        <title id="thrT">Missed cases against false alarms as the cut-off falls from 0.50 to 0.10.</title>
+        <g stroke="#B7D2CF"><line x1="40" y1="200" x2="460" y2="200"/><line x1="40" y1="140" x2="460" y2="140" stroke-dasharray="2 4"/><line x1="40" y1="80" x2="460" y2="80" stroke-dasharray="2 4"/><line x1="40" y1="20" x2="460" y2="20" stroke-dasharray="2 4"/></g>
+        <g font-size="12" fill="#5D7377" text-anchor="end"><text x="32" y="204">0</text><text x="32" y="144">30</text><text x="32" y="84">60</text><text x="32" y="24">90</text></g>
+        <g font-size="12" fill="#5D7377" text-anchor="middle"><text x="40" y="220">0</text><text x="145" y="220">60</text><text x="250" y="220">120</text><text x="355" y="220">180</text><text x="460" y="220">240</text>
+          <text x="250" y="244">false alarms</text></g>
+        <text x="40" y="10" font-size="12" fill="#5D7377">missed cases</text>
+        <path d="M124 44 L168 70 L227 102 L252 116 L289 132 L341 168 L418 182 L418 200 L124 200Z" fill="#1D6B66" opacity=".10"/>
+        <polyline points="124,44 168,70 227,102 252,116 289,132 341,168 418,182" fill="none" stroke="#1B2A44" stroke-width="2.2"/>
+        <g fill="#1B2A44"><circle cx="168" cy="70" r="3"/><circle cx="227" cy="102" r="3"/><circle cx="252" cy="116" r="3"/><circle cx="289" cy="132" r="3"/><circle cx="418" cy="182" r="3"/></g>
+        <circle cx="124" cy="44" r="5.5" fill="#DCEBE9" stroke="#1B2A44" stroke-width="2"/>
+        <circle cx="341" cy="168" r="6" fill="#C9A45C" stroke="#1B2A44" stroke-width="1.5"/>
+        <g font-size="12.5"><text x="136" y="40" fill="#1B2A44">0.50 cut-off: 78 missed</text><text x="330" y="190" fill="#7A5A1C" text-anchor="end" font-weight="600">0.15 cut-off: 16 missed</text></g>
+      </svg>
+      <p class="cap"><b>Lowering the cut-off trades false alarms for missed cases.</b> From 0.50 to 0.15, recall rises from 70% to 94% while false alarms go from 48 to 172.</p>
+    </div>
+  </article>
+</div></section>
+
+<section id="experience"><div class="wrap">
+  <div class="head"><h2>Experience and education</h2></div>
+  <div class="duo">
+    <div class="panel">
+      <div class="role">
+        <div class="top"><h3>Analytics Intern</h3><span class="when">Apr to Jun 2026</span></div>
+        <div class="org">Aditya Birla Capital</div>
+        <ul>
+          <li>Designed and deployed an AI voice bot to qualify 6,750 cold app leads, after mapping 12 conversation stages and stress-testing it across 150+ scenarios.</li>
+          <li>Analysed 380K+ call records across three bot campaigns; AI-screened leads converted better downstream than cold-called ones.</li>
+          <li>Found 11am to be the best hour for outreach from the connect rates of 4,600+ calls.</li>
+        </ul>
+      </div>
+      <div class="role">
+        <div class="top"><h3>Preparation Committee Mentor</h3><span class="when">2026</span></div>
+        <div class="org">IIFT Delhi</div>
+        <p>Authored 40+ business cases for placement preparation used by 500+ students, and ran mock group discussions and interviews.</p>
+      </div>
+    </div>
+    <div class="panel navy">
+      <h3>Education</h3>
+      <div class="school"><b>MBA, Business Analytics</b><span>Indian Institute of Foreign Trade, Delhi, 2027</span><em>81%</em></div>
+      <div class="school"><b>B.Tech, Mechanical Engineering</b><span>Delhi Technological University, 2023</span><em>88.30%</em></div>
+      <div class="school"><b>CAT, Quantitative Ability</b><span>Common Admission Test</span><em>99.28 percentile</em></div>
+    </div>
+  </div>
+</div></section>
+
+<footer class="contact" id="contact"><div class="wrap">
+  <h2>Open to quant, risk and analytics roles in banks, asset managers and fintechs.</h2>
+  <div class="actions">
+    <a class="btn gold" href="mailto:hardikgoel777@gmail.com">hardikgoel777@gmail.com</a>
+    <a class="btn line" href="https://www.linkedin.com/in/hardik-goel-b90a2a121/">LinkedIn</a>
+    <a class="btn line" href="https://github.com/hardikgoel7">GitHub</a>
+  </div>
+  <small>© 2026 Hardik Goel. Research projects only; nothing here is investment advice.</small>
+</div></footer>
+
+</body>
+</html>
